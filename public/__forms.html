@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Netlify Forms</title></head>
+<body>
+  <!-- 
+    CRITICAL: Netlify cannot crawl Next.js dynamic pages.
+    This static file lets Netlify detect the form at build time.
+    The Contact page POSTs to /__forms.html — Netlify intercepts it.
+    DO NOT DELETE.
+  -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="contact" />
+    <input name="bot-field" />
+    <input name="name" type="text" />
+    <input name="company" type="text" />
+    <input name="role" type="text" />
+    <input name="email" type="email" />
+    <input name="phone" type="tel" />
+    <input name="service" type="text" />
+    <textarea name="message"></textarea>
+  </form>
+</body>
+</html>
