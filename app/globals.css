@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy:       #0D1E3A;
+  --gold:       #B8892A;
+  --gold-light: #D4A84B;
+  --techblue:   #1A6B9E;
+  --slate:      #3E4E5E;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: #fff; color: var(--navy); overflow-x: hidden; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #f0f4f8; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ── Utility ── */
+.gold-bar   { display: block; width: 40px; height: 2px; background: var(--gold); }
+.gold-rule  { height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+.eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── Reveal ── */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.vis { opacity: 1; transform: none; }
+
+/* ── Buttons ── */
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 30px; background: var(--gold); color: var(--navy);
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: background 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+.btn-gold:hover { background: var(--gold-light); box-shadow: 0 8px 28px rgba(184,137,42,0.35); transform: translateY(-1px); }
+
+.btn-navy {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 30px; background: var(--navy); color: #fff;
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-navy:hover { background: var(--techblue); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 30px; background: transparent; color: #fff;
+  font-family: 'Montserrat', sans-serif; font-weight: 600;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; text-decoration: none;
+  transition: border-color 0.25s, color 0.25s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+.btn-outline-navy {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 30px; background: transparent; color: var(--navy);
+  font-family: 'Montserrat', sans-serif; font-weight: 600;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  border: 1.5px solid var(--navy); cursor: pointer; text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-outline-navy:hover { background: var(--navy); color: #fff; }
+
+/* ── Hero ── */
+.page-hero {
+  background: linear-gradient(135deg, #0D1E3A 0%, #1A3259 55%, #1A6B9E 100%);
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(184,137,42,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(184,137,42,0.04) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* ── Cards ── */
+.card {
+  background: #fff; border: 1px solid rgba(13,30,58,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
+}
+.card::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 2px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 18px 52px rgba(13,30,58,0.11); }
+.card:hover::after { transform: scaleX(1); }
+
+/* ── Nav ── */
+.nav-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  position: relative; text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-link::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 0; height: 1.5px; background: var(--gold);
+  transition: width 0.2s;
+}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* ── Form ── */
+.field-label {
+  display: block; font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--slate); margin-bottom: 6px;
+}
+.field-input {
+  width: 100%; background: #fff;
+  border: 1.5px solid rgba(13,30,58,0.15);
+  color: var(--navy); font-family: 'Georgia', serif;
+  font-size: 15px; padding: 12px 15px;
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+}
+.field-input::placeholder { color: rgba(13,30,58,0.3); }
+.field-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184,137,42,0.1); }
+.field-error { font-family: 'Montserrat', sans-serif; font-size: 10px; color: #c0392b; margin-top: 4px; }
+
+/* ── Text gradient ── */
+.grad { background: linear-gradient(135deg, #B8892A, #D4A84B, #B8892A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
